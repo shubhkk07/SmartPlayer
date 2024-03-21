@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1095604921798",
+    "project_id": "smartaudio-b84f1",
+    "storage_bucket": "smartaudio-b84f1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1095604921798:android:271b8cb1600c3c4a063ec7",
+        "android_client_info": {
+          "package_name": "com.example.smartlisten"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJ_tamN0kjRlwm5OfJeUCDcdMQv4GugrM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
