@@ -7,4 +7,8 @@ final class FavsongsInitial extends FavsongsState {}
 
 final class FavSongLoading extends FavsongsState {}
 
-final class FavSongLoaded extends FavsongsState {}
+final class FavSongLoaded extends FavsongsState {
+  final List<SongModel> favSongs;
+
+  FavSongLoaded({required this.favSongs});
+}

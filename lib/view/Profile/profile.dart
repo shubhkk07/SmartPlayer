@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:smartlisten/bloc/add_remove_favourites/cubit/add_remove_favourites_cubit.dart';
 import 'package:smartlisten/bloc/authentication_bloc/bloc/authentication_bloc.dart';
 import 'package:smartlisten/bloc/fav_song/bloc/favsongs_bloc.dart';
 import 'package:smartlisten/bloc/song_bloc/bloc/song_bloc.dart';
@@ -86,10 +87,11 @@ class _ProfileState extends State<Profile> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => BlocProvider(
-                            create: (context) => FavsongsBloc(),
-                            child: const FavouriteSongs(),
-                          )));
+                    builder: (context) => BlocProvider(
+                      create: (context) => FavsongsBloc()..add(FavouiteSongsList()),
+                      child: const FavouriteSongs(),
+                    ),
+                  ));
             },
           ),
           const SizedBox(

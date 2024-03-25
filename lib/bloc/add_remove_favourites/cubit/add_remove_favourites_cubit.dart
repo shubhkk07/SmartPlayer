@@ -10,28 +10,30 @@ class AddRemoveFavouritesCubit extends Cubit<AddRemoveFavouritesState> {
 
   final FavSongsRepo _favSongsRepo = FavSongsRepo();
 
-  void addToFavourites(SongModel song) {
+  void addToFavourites(SongModel song) async {
     try {
-      _favSongsRepo.addToFavouriteSongs(song);
+      await _favSongsRepo.addToFavouriteSongs(song);
       emit(AddedToFavourites(songModel: song));
     } catch (e) {
       throw e.toString();
     }
   }
 
-  void removeFromFavourites(SongModel song) {
+  void removeFromFavourites(SongModel song) async {
     try {
-      _favSongsRepo.removeFromFavouriteSongs(song);
+      await _favSongsRepo.removeFromFavouriteSongs(song);
       emit(RemoveFromFavourites(songModel: song));
     } catch (e) {
       throw e.toString();
     }
   }
 
-  void checkSongIsFavourite(SongModel songModel) async {
+  checkSongIsFavourite(SongModel songModel, {bool isFavourite = false}) async {
     final val = await _favSongsRepo.checkSongIsFavourite(songModel);
-    if (val) {
+    if (val || isFavourite) {
       emit(AddedToFavourites(songModel: songModel));
+    } else {
+      emit(RemoveFromFavourites(songModel: songModel));
     }
   }
 }

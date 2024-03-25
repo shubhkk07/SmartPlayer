@@ -60,7 +60,8 @@ class HomeView extends StatelessWidget {
             height: 20,
           ),
           Expanded(
-            child: BlocBuilder<SongBloc, SongState>(
+            child: BlocConsumer<SongBloc, SongState>(
+              listener: (context, state) {},
               builder: (context, state) {
                 if (state is SongInitial || state is SongLoading) {
                   return const Center(
@@ -81,7 +82,19 @@ class HomeView extends StatelessWidget {
                         itemCount: state.songList.length,
                         itemBuilder: (context, index) {
                           final song = state.songList[index];
-                          return SongTile(song: song);
+                          return
+                              // BlocListener<AddRemoveFavouritesCubit, AddRemoveFavouritesState>(
+                              //   listenWhen: (previous, current) {
+                              //     if (previous is AddedToFavourites) {
+                              //       return true;
+                              //     }
+                              //     return false;
+                              //   },
+                              //   listener: (context, state) {
+                              //     context.read<AddRemoveFavouritesCubit>().checkSongIsFavourite(song);
+                              //   },
+                              //   child:
+                              SongTile(song: song);
                         }),
                   );
                 } else {

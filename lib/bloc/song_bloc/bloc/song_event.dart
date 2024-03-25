@@ -9,8 +9,4 @@ final class FetchNewSongs extends SongEvent {
   FetchNewSongs({this.term});
 }
 
-final class FetchAllSongs extends SongEvent {
-  final String? term;
-
-  FetchAllSongs({this.term});
-}
+final class FetchAllSongs extends SongEvent {}

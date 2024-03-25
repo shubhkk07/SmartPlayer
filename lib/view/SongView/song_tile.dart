@@ -3,15 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smartlisten/bloc/add_remove_favourites/cubit/add_remove_favourites_cubit.dart';
 import 'package:smartlisten/bloc/current_selected_song/bloc/current_selected_song_bloc.dart';
 import 'package:smartlisten/model/song_model.dart';
-import 'package:smartlisten/repository/save_fav.dart/save_fav.dart';
 import 'package:smartlisten/view/SongView/detail.dart';
 import 'package:smartlisten/view/SongView/fav_icon_widget.dart';
 
 class SongTile extends StatelessWidget {
   final SongModel song;
-  SongTile({super.key, required this.song});
-
-  final FavSongsRepo saveDataRepo = FavSongsRepo();
+  const SongTile({super.key, required this.song});
 
   @override
   Widget build(BuildContext context) {
@@ -30,10 +27,11 @@ class SongTile extends StatelessWidget {
         maxLines: 2,
       ),
       trailing: BlocProvider(
-          create: (context) => AddRemoveFavouritesCubit(),
-          child: FavouriteIconWidget(
-            songModel: song,
-          )),
+        create: (context) => AddRemoveFavouritesCubit(),
+        child: FavouriteIconWidget(
+          songModel: song,
+        ),
+      ),
       onTap: () {
         Navigator.push(
             context,

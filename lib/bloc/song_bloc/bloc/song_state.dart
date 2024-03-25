@@ -9,8 +9,9 @@ final class SongLoading extends SongState {}
 
 final class SongListLoaded extends SongState {
   final List<SongModel> songList;
+  final Function? callbackl;
 
-  SongListLoaded({required this.songList});
+  SongListLoaded({this.callbackl, required this.songList});
 }
 
 final class SongListErrorState extends SongState {

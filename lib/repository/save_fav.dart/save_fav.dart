@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -23,12 +25,16 @@ class FavSongsRepo {
     }
   }
 
-  Future getFavouriteSongsByUser() async {
+  Future<List<SongModel>> getFavouriteSongsByUser() async {
     try {
-      final data = await _collectionReference.get();
-      print(data);
-      print(data.docs);
-      return data.docs;
+      final data = _collectionReference.withConverter<SongModel>(
+          fromFirestore: (snapshot, _) => SongModel.fromJson(snapshot.data()!), toFirestore: (model, _) => model.toJson());
+
+      List<SongModel> favSongs = [];
+
+      favSongs = await data.get().then((value) => value.docs.map((e) => e.data()).toList());
+
+      return favSongs;
     } catch (e) {
       throw e.toString();
     }

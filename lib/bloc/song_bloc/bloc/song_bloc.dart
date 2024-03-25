@@ -21,6 +21,7 @@ class SongBloc extends Bloc<SongEvent, SongState> {
     });
 
     on<FetchAllSongs>((event, emit) {
+      emit(SongLoading());
       emit(SongListLoaded(songList: songs));
     });
   }

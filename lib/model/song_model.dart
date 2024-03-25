@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'song_model.g.dart';
@@ -72,6 +73,10 @@ class SongModel {
       this.isStreamable});
 
   factory SongModel.fromJson(Map<String, dynamic> json) => _$SongModelFromJson(json);
+
+  factory SongModel.fromSnapShot(DocumentSnapshot snapshot) {
+    return SongModel(trackName: snapshot.get('field'));
+  }
 
   Map<String, dynamic> toJson() => _$SongModelToJson(this);
 }
