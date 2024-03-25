@@ -85,13 +85,11 @@ class _ProfileState extends State<Profile> {
             ),
             onTap: () {
               Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => BlocProvider(
-                      create: (context) => FavsongsBloc()..add(FavouiteSongsList()),
-                      child: const FavouriteSongs(),
-                    ),
-                  ));
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const FavouriteSongs(),
+                ),
+              );
             },
           ),
           const SizedBox(

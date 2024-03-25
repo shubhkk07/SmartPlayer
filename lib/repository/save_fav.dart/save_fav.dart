@@ -33,7 +33,7 @@ class FavSongsRepo {
       List<SongModel> favSongs = [];
 
       favSongs = await data.get().then((value) => value.docs.map((e) => e.data()).toList());
-
+      print("songs loaded from cloud");
       return favSongs;
     } catch (e) {
       throw e.toString();

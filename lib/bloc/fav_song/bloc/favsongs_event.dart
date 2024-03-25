@@ -4,3 +4,5 @@ part of 'favsongs_bloc.dart';
 sealed class FavsongsEvent {}
 
 final class FavouiteSongsList extends FavsongsEvent {}
+
+final class FavouiteSongsListFromFirestore extends FavsongsEvent {}

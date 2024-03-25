@@ -9,4 +9,8 @@ final class FetchNewSongs extends SongEvent {
   FetchNewSongs({this.term});
 }
 
-final class FetchAllSongs extends SongEvent {}
+final class FetchAllSongs extends SongEvent {
+  final SongModel? songModel;
+
+  FetchAllSongs({required this.songModel});
+}

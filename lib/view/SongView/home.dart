@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smartlisten/bloc/add_remove_favourites/cubit/add_remove_favourites_cubit.dart';
 import 'package:smartlisten/bloc/song_bloc/bloc/song_bloc.dart';
+import 'package:smartlisten/model/song_model.dart';
 import 'package:smartlisten/view/Profile/profile.dart';
 import 'package:smartlisten/view/SongView/search_algo/song_search_delegate.dart';
 import 'package:smartlisten/view/SongView/song_tile.dart';
@@ -60,8 +61,7 @@ class HomeView extends StatelessWidget {
             height: 20,
           ),
           Expanded(
-            child: BlocConsumer<SongBloc, SongState>(
-              listener: (context, state) {},
+            child: BlocBuilder<SongBloc, SongState>(
               builder: (context, state) {
                 if (state is SongInitial || state is SongLoading) {
                   return const Center(
@@ -82,19 +82,31 @@ class HomeView extends StatelessWidget {
                         itemCount: state.songList.length,
                         itemBuilder: (context, index) {
                           final song = state.songList[index];
-                          return
-                              // BlocListener<AddRemoveFavouritesCubit, AddRemoveFavouritesState>(
-                              //   listenWhen: (previous, current) {
-                              //     if (previous is AddedToFavourites) {
-                              //       return true;
-                              //     }
-                              //     return false;
-                              //   },
-                              //   listener: (context, state) {
-                              //     context.read<AddRemoveFavouritesCubit>().checkSongIsFavourite(song);
-                              //   },
-                              //   child:
-                              SongTile(song: song);
+                          // return SongTile(song: song);
+                          // BlocListener<AddRemoveFavouritesCubit, AddRemoveFavouritesState>(
+                          //   listenWhen: (previous, current) {
+                          //     if (previous is AddedToFavourites) {
+                          //       return true;
+                          //     }
+                          //     return false;
+                          //   },
+                          //   listener: (context, state) {
+                          //     context.read<AddRemoveFavouritesCubit>().checkSongIsFavourite(song);
+                          //   },
+                          //   child:
+
+                          return BlocBuilder<SongBloc, SongState>(
+                            buildWhen: (previous, current) {
+                              if (current is SongListLoaded) {
+                                return state.songModel == song ? true : false;
+                              } else {
+                                return false;
+                              }
+                            },
+                            builder: (context, state) {
+                              return SongTile(song: song);
+                            },
+                          );
                         }),
                   );
                 } else {

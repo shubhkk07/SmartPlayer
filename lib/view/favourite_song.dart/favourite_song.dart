@@ -13,7 +13,7 @@ class FavouriteSongs extends StatefulWidget {
 class _FavouriteSongsState extends State<FavouriteSongs> {
   @override
   void initState() {
-    // BlocProvider.of<FavsongsBloc>(context).add(FavouiteSongsList());
+    context.read<FavsongsBloc>().add(FavouiteSongsList());
     super.initState();
   }
 

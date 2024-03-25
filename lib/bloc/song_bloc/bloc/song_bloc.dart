@@ -16,13 +16,14 @@ class SongBloc extends Bloc<SongEvent, SongState> {
         await getAllSongs(event.term);
         emit(SongListLoaded(songList: songs));
       } catch (e) {
+        print(e.toString());
         emit(SongListErrorState(e.toString()));
       }
     });
 
     on<FetchAllSongs>((event, emit) {
       emit(SongLoading());
-      emit(SongListLoaded(songList: songs));
+      emit(SongListLoaded(songList: songs, songModel: event.songModel));
     });
   }
 
