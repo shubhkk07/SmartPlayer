@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smartlisten/bloc/add_remove_favourites/cubit/add_remove_favourites_cubit.dart';
 import 'package:smartlisten/bloc/fav_song/bloc/favsongs_bloc.dart';
 import 'package:smartlisten/bloc/song_bloc/bloc/song_bloc.dart';
-// import 'package:smartlisten/bloc/song_bloc/bloc/song_bloc.dart';
 import 'package:smartlisten/model/song_model.dart';
 
 class FavouriteIconWidget extends StatelessWidget {

@@ -35,7 +35,6 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => AuthenticationBloc()),
         BlocProvider(create: (context) => FavsongsBloc()),
         BlocProvider(create: (context) => AudioControlBloc()),
-        BlocProvider(create: (context) => AddRemoveFavouritesCubit()),
         BlocProvider(create: (context) => SongBloc()..add(FetchNewSongs())),
       ],
       child: MaterialApp(
